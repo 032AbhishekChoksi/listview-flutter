@@ -33,6 +33,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var arrName = ['Abhishek', 'Deep', 'Monish', 'Kevin', 'Raj', 'Abhi'];
+  var arrContact = [
+    '7877884455',
+    '9999884455',
+    '7810203055',
+    '9918884455',
+    '9999991122',
+    '88117722222'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -97,18 +105,46 @@ class _MyHomePageState extends State<MyHomePage> {
       *   -> the separator list.
       * Unlike the builder() constructor, the itemCount parameter is compulsory here.
       */
-      body: ListView.separated(
+      // body: ListView.separated(
+      //   padding: const EdgeInsets.all(8.0),
+      //   itemCount: arrName.length,
+      //   itemBuilder: (context, index) {
+      //     return Text(
+      //       arrName[index],
+      //       style: const TextStyle(fontSize: 20),
+      //     );
+      //   },
+      //   separatorBuilder: (context, index) {
+      //     return const Divider(height: 5, thickness: 2);
+      //   },
+      // ),
+
+      /*
+      * ListTile Widget
+      *   ListTile widget is used to populate a ListView in Flutter. It contains title as well as leading or trailing icons.
+      */
+      body: ListView.builder(
         padding: const EdgeInsets.all(8.0),
-        itemCount: arrName.length,
+        // scrollDirection: Axis.horizontal,
+        // reverse: true,
         itemBuilder: (context, index) {
-          return Text(
-            arrName[index],
-            style: const TextStyle(fontSize: 20),
+          return ListTile(
+            leading: Text(
+              '${index + 1}',
+              style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w400),
+            ),
+            title: Text(
+              arrName[index],
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+            ),
+            subtitle: Text(
+              arrContact[index],
+              style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+            ),
+            trailing: const Icon(Icons.edit),
           );
         },
-        separatorBuilder: (context, index) {
-          return const Divider(height: 5, thickness: 2);
-        },
+        itemCount: arrName.length,
       ),
     );
   }
