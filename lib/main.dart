@@ -75,18 +75,40 @@ class _MyHomePageState extends State<MyHomePage> {
       *   -> An itemBuilder for constructing the widget which will be generated ‘itemCount‘ times (compulsory).
       * If the itemCount is not specified, infinite widgets will be constructed by default.
       */
-      body: ListView.builder(
+      // body: ListView.builder(
+      //   padding: const EdgeInsets.all(8.0),
+      //   // scrollDirection: Axis.horizontal,
+      //   // reverse: true,
+      //   itemExtent: 50,
+      //   itemBuilder: (context, index) {
+      //     return Text(
+      //       arrName[index],
+      //       style: const TextStyle(fontSize: 20),
+      //     );
+      //   },
+      //   itemCount: arrName.length,
+      // ),
+
+      /*
+      * ListView.separated()
+      * The ListView.separated() constructor is used to generate a list of widgets, but in addition, a separator widget can also be generated to separate the widgets.
+      * In short, these are two intertwined list of widgets:
+      *   -> the main list
+      *   -> the separator list.
+      * Unlike the builder() constructor, the itemCount parameter is compulsory here.
+      */
+      body: ListView.separated(
         padding: const EdgeInsets.all(8.0),
-        // scrollDirection: Axis.horizontal,
-        // reverse: true,
-        itemExtent: 50,
+        itemCount: arrName.length,
         itemBuilder: (context, index) {
           return Text(
             arrName[index],
             style: const TextStyle(fontSize: 20),
           );
         },
-        itemCount: arrName.length,
+        separatorBuilder: (context, index) {
+          return const Divider(height: 5, thickness: 2);
+        },
       ),
     );
   }
