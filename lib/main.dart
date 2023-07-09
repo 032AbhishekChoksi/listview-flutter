@@ -32,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var arrName = ['Abhishek', 'Deep', 'Monish', 'Kevin', 'Raj', 'Abhi'];
 
   @override
   Widget build(BuildContext context) {
@@ -48,22 +49,44 @@ class _MyHomePageState extends State<MyHomePage> {
       * Usually, this is used with a few children as the List will also construct invisible elements in the list,
       * so numerous widgets may render this inefficiently.
       */
-      body: ListView(
+      // body: ListView(
+      //   // scrollDirection: Axis.horizontal,
+      //   // reverse: true,
+      //   padding: const EdgeInsets.all(8.0),
+      //   children: const [
+      //     Text('One', style: TextStyle(fontSize: 20)),
+      //     Text('Two', style: TextStyle(fontSize: 20)),
+      //     Text('Three', style: TextStyle(fontSize: 20)),
+      //     Text('Four', style: TextStyle(fontSize: 20)),
+      //     Text('Five', style: TextStyle(fontSize: 20)),
+      //     Text('Six', style: TextStyle(fontSize: 20)),
+      //     Text('Seven', style: TextStyle(fontSize: 20)),
+      //     Text('Eight', style: TextStyle(fontSize: 20)),
+      //     Text('Nine', style: TextStyle(fontSize: 20)),
+      //     Text('Ten', style: TextStyle(fontSize: 20)),
+      //   ],
+      // ),
+
+      /*
+      * ListView.builder()
+      * The builder() constructor constructs a repeating list of widgets.
+      * The constructor takes two main parameters:
+      *   -> An itemCount for the number of repetitions for the widget to be constructed (not compulsory).
+      *   -> An itemBuilder for constructing the widget which will be generated ‘itemCount‘ times (compulsory).
+      * If the itemCount is not specified, infinite widgets will be constructed by default.
+      */
+      body: ListView.builder(
+        padding: const EdgeInsets.all(8.0),
         // scrollDirection: Axis.horizontal,
         // reverse: true,
-        padding: const EdgeInsets.all(8.0),
-        children: const [
-          Text('One', style: TextStyle(fontSize: 20)),
-          Text('Two', style: TextStyle(fontSize: 20)),
-          Text('Three', style: TextStyle(fontSize: 20)),
-          Text('Four', style: TextStyle(fontSize: 20)),
-          Text('Five', style: TextStyle(fontSize: 20)),
-          Text('Six', style: TextStyle(fontSize: 20)),
-          Text('Seven', style: TextStyle(fontSize: 20)),
-          Text('Eight', style: TextStyle(fontSize: 20)),
-          Text('Nine', style: TextStyle(fontSize: 20)),
-          Text('Ten', style: TextStyle(fontSize: 20)),
-        ],
+        itemExtent: 50,
+        itemBuilder: (context, index) {
+          return Text(
+            arrName[index],
+            style: const TextStyle(fontSize: 20),
+          );
+        },
+        itemCount: arrName.length,
       ),
     );
   }
